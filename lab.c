@@ -1,5 +1,4 @@
-#include <stdio.h>
-#define eps 0.0001
+#define eps 0.000001
 
 double fabs(double x){
 	if (x >= 0)
@@ -30,24 +29,21 @@ double tg(double x){
 		cos_x*=-x*x/(2*n-1)/(2*n);
 	}
 	while(fabs(cos_x)>eps);
-	printf("%f\n", s);
 	cos_x=s;
 	tg_x= sin_x/cos_x;
-	printf("%f\n", tg_x);
-
 	return tg_x;
-
-
-
 }
-
-
 int main(){
-	double x;
-	x=tg(30.0);
-	printf("%f\t", x);
-	
-
-	return 0;
-
+	int res;
+	double x[5] = {1.0,2.0,3.0,4.0,5.0};
+	double ref[5]={1.557407,-2.185039,-0.142546,1.157821,-3.380515};
+	int i;
+	for( i=0; i < 5 ;i++){
+		if(fabs(fabs(tg(x[i]))-fabs(ref[i]))<=eps)
+			res=0;
+		else res=1;
+		if (res==1)
+			break;
+	}
+	return res;
  }
