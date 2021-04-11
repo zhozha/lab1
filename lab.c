@@ -1,6 +1,11 @@
 #include <stdio.h>
-#define eps 0.00001
-#include <math.h>
+#define eps 0.0001
+
+double fabs(double x){
+	if (x >= 0)
+		return x;
+    return x*(-1);		
+}
 double tg(double x){
 	double  s, sin_x, cos_x, tg_x ;
 	int n;
@@ -18,7 +23,7 @@ double tg(double x){
 	sin_x = s;
 	cos_x = 1;
 	n = 0;
-	s = 1;
+	s = 0;
 	do{
 		n++;
 		s+=cos_x;
